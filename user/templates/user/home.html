@@ -1,0 +1,339 @@
+{%  extends 'user/main.html' %}
+
+{% block content %}
+
+ <section>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+            <div class="row pt-md-5 mt-md-3 mb-5">
+              <div class="col-xl-3 col-sm-6 p-2">
+                <div class="card card-common">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <i class="fas fa-shopping-cart fa-3x text-warning"></i>
+                      <div class="text-right text-secondary">
+                        <h5>Sales</h5>
+                        <h3>$135,000</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer text-secondary">
+                    <i class="fas fa-sync mr-3"></i>
+                    <span>Updated Now</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 p-2">
+                <div class="card card-common">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <i class="fas fa-money-bill-alt fa-3x text-success"></i>
+                      <div class="text-right text-secondary">
+                        <h5>Expenses</h5>
+                        <h3>$39,000</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer text-secondary">
+                    <i class="fas fa-sync mr-3"></i>
+                    <span>Updated Now</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 p-2">
+                <div class="card card-common">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <i class="fas fa-money-bill-alt fa-3x text-info"></i>
+                      <div class="text-right text-secondary">
+                        <h5>Total Profit</h5>
+                        <h3>15,000</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer text-secondary">
+                    <i class="fas fa-sync mr-3"></i>
+                    <span>Updated Now</span>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xl-3 col-sm-6 p-2">
+                <div class="card card-common">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <i class="fas fa-cubes fa-3x text-danger"></i>
+                      <div class="text-right text-secondary">
+                        <h5>Total Leads</h5>
+                        <h3>45,000</h3>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card-footer text-secondary">
+                    <i class="fas fa-sync mr-3"></i>
+                    <span>Updated Now</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end of cards -->
+
+    <!-- tables -->
+    <section>
+      <div class="container-fluid">
+        <div class="row mb-5">
+          <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+            <div class="row align-items-center">
+              <div class="col-xl-6 col-12 mb-4 mb-xl-0 background rounded">
+                <h3 class="text-muted text-center mb-3">Staff Information</h3>
+                <table class="table table-striped bg-light text-center ">
+                  <thead>
+                    <tr class="text-muted">
+                      <th>E_id</th>
+                      <th>Name</th>
+                      <th>Salary</th>
+                      <th>D_Join</th>
+                      <th>State</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for employee in employees %}
+                      <tr>
+                        <td>{{employee.employee_id}}</td>
+                        <td>{{employee.name}}</td>
+                        <td>{{employee.salary}}</td>
+                        <td>{{employee.d_o_j}}</td>
+                        <td>{{employee.state}}</td>
+                      </tr>
+                    {% endfor %}
+                  </tbody>
+                </table>
+
+                <!-- pagination -->
+                <nav>
+                  <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                      <a href="#" class="page-link py-2 px-3">
+                        <span>&laquo;</span>
+                      </a>
+                    </li>
+                    <li class="page-item active">
+                      <a href="#" class="page-link py-2 px-3">
+                        1
+                      </a>
+                    </li>
+                    <li class="page-item">
+                      <a href="#" class="page-link py-2 px-3">
+                        2
+                      </a>
+                    </li>
+                    <li class="page-item">
+                      <a href="#" class="page-link py-2 px-3">
+                        3
+                      </a>
+                    </li>
+                    <li class="page-item">
+                      <a href="#" class="page-link py-2 px-3">
+                        <span>&raquo;</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+                <!-- end of pagination -->
+
+              </div>
+              <div class="col-xl-6 col-12 ">
+                <h3 class="text-muted text-center mb-3">Your Earnings</h3>
+                <div id="chart_div"></div>
+                <br/>
+                <div id="btn-group">
+                  <button class="button button-blue" id="none">No Format</button>
+                  <button class="button button-blue" id="scientific">Scientific Notation</button>
+                  <button class="button button-blue" id="decimal">Decimal</button>
+                  <button class="button button-blue" id="short">Short</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end of tables -->
+
+    <!-- progress / task list -->
+    <section>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+            <div class="row mb-4 align-items-center">
+              <div class="col-xl-6 col-12 mb-4 mb-xl-0 bg-light">
+                <div class="text-black p-4 rounded">
+                  <h4 class="mb-5">Browsing Status</h4>
+                  {% for browser in history %}
+                  <h6 class="mb-3">{{browser.name}}</h6>
+                  <div class="progress mb-3" style="height: 15px">
+                    <div class="progress-bar progress-bar-striped font-weight-bold " style="width: {{browser.count}}%">
+                      {{browser.count}}%
+                    </div>
+                  </div>
+                  {% endfor %}
+                  <!--<h6 class="mb-3">Chrome</h6>
+                  <div class="progress mb-3" style="height: 15px">
+                    <div class="progress-bar progress-bar-striped font-weight-bold " style="width: 1%">
+                      91%
+                    </div>
+                  </div>
+                  <h6 class="mb-3">Firefox</h6>
+                  <div class="progress mb-3" style="height: 15px">
+                    <div class="progress-bar progress-bar-striped font-weight-bold bg-success " style="width: 82%">
+                      82%
+                    </div>
+                  </div>
+                  <h6 class="mb-3">Safari</h6>
+                  <div class="progress mb-3" style="height: 15px">
+                    <div class="progress-bar progress-bar-striped font-weight-bold bg-danger " style="width: 67%">
+                      67%
+                    </div>
+                  </div>
+                  <h6 class="mb-3">Opera</h6>
+                  <div class="progress mb-3" style="height: 15px">
+                    <div class="progress-bar progress-bar-striped font-weight-bold bg-info " style="width: 30%">
+                      30%
+                    </div>
+                  </div>
+                  <h6 class="mb-3">UC Browser</h6>
+                  <div class="progress mb-3" style="height: 15px">
+                    <div class="progress-bar progress-bar-striped font-weight-bold bg-dark " style="width: 70%">
+                      67%
+                    </div>
+                  </div>
+                  <h6 class="mb-3">Internet Explorer</h6>
+                  <div class="progress mb-3" style="height: 15px">
+                    <div class="progress-bar progress-bar-striped font-weight-bold bg-warning " style="width: 60%">
+                      67%
+                    </div>
+                  </div>-->
+                </div>
+              </div>
+              <div class="col-xl-6 col-12 ">
+                <div id="donutchart" style=" height: 500px;"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- end of progress / task list -->
+
+    <section>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xl-10 col-lg-9 col-md-8 ml-auto">
+            <div class="row mb-4 align-items-center">
+              <div class=" col-12 mb-4 mb-xl-0 bg-light">
+                <h3 class="text-muted text-center mb-3">Product Sales</h3>
+                <table class="table table-light table-hover text-center">
+                  <thead>
+                    <tr class="text-muted">
+                      <th>PRODUCT</th>
+                      <th>STOCK</th>
+                      <th>AMOUNT</th>
+                      <th>RECORD POINT</th>
+                      <th>SOLD</th>
+                      <th>STOCK STATUS</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th>Women Wallet-E32N</th>
+                      <td>112</td>
+                      <td>$2,000</td>
+                      <td>05</td>
+                      <td>18</td>
+                      <td><span class="badge badge-success w-75 py-2">Approved</span></td>
+                    </tr>
+                    <tr>
+                      <th>Phone 345S</th>
+                      <td>210</td>
+                      <td>$3,522</td>
+                      <td>04</td>
+                      <td>10</td>
+                      <td><span class="badge badge-success w-75 py-2">Approved</span></td>
+                    </tr>
+                    <tr>
+                      <th>Doll Elephant</th>
+                      <td>215</td>
+                      <td>$5,362</td>
+                      <td>08</td>
+                      <td>15</td>
+                      <td><span class="badge badge-danger w-75 py-2">Pending</span></td>
+                    </tr>
+                    <tr>
+                      <th>Woman Kurtis</th>
+                      <td>102</td>
+                      <td>$1,362</td>
+                      <td>07</td>
+                      <td>21</td>
+                      <td><span class="badge badge-danger w-75 py-2">Pending</span></td>
+                    </tr>
+                    <tr>
+                      <th>Mens Shoes</th>
+                      <td>325</td>
+                      <td>$5,234</td>
+                      <td>10</td>
+                      <td>34</td>
+                      <td><span class="badge badge-success w-75 py-2">Approved</span></td>
+                    </tr>
+                    <tr>
+                      <th>Laptos</th>
+                      <td>0</td>
+                      <td>$7,652</td>
+                      <td>10</td>
+                      <td>60</td>
+                      <td><span class="badge badge-danger w-75 py-2">Pending</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+                 <!-- pagination -->
+                 <nav>
+                  <ul class="pagination justify-content-center">
+                    <li class="page-item">
+                      <a href="#" class="page-link py-2 px-3">
+                        <span>Previous</span>
+                      </a>
+                    </li>
+                    <li class="page-item active">
+                      <a href="#" class="page-link py-2 px-3">
+                        1
+                      </a>
+                    </li>
+                    <li class="page-item">
+                      <a href="#" class="page-link py-2 px-3">
+                        2
+                      </a>
+                    </li>
+                    <li class="page-item">
+                      <a href="#" class="page-link py-2 px-3">
+                        3
+                      </a>
+                    </li>
+                    <li class="page-item">
+                      <a href="#" class="page-link py-2 px-3">
+                        <span>Next</span>
+                      </a>
+                    </li>
+                  </ul>
+                </nav>
+                <!-- end of pagination -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+{% endblock %}
